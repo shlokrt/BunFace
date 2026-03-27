@@ -2,9 +2,7 @@
 
 ## 🔐 Overview
 
-**BunFace** is a real-time face authentication system for Ubuntu and Debian-based Linux systems. It enables password-less authentication using facial recognition, similar to Windows Hello.
-
-The system uses a stored face embedding and compares it with a live camera feed to grant or deny access.
+**BunFace** is a real-time face authentication system for Ubuntu and Debian-based Linux systems. It enables password-less authentication for sudo using facial recognition, similar to Windows Hello.
 
 ---
 
@@ -37,14 +35,12 @@ Key Features:
 
 * Loads stored face embedding
 * Captures live face within 5 seconds
-* Uses distance threshold (`0.6`) for matching
 * Logs activity to `/tmp/face_auth.log`
 * Returns exit codes (important for PAM integration):
 
   * `0` → Success
   * `1` → Failure
-
-👉 See code: 
+ 
 
 ---
 
@@ -62,22 +58,14 @@ Key Features:
 * Saves embedding to:
 
   ```
-  /home/mach1/Python-Project/Face_data/encoding.npy
+  /home/username/BunFace/Face_data/encoding.npy
   ```
 
 👉 See code: 
 
 ---
 
-## 🛠️ Tech Stack
 
-* **Python 3**
-* **OpenCV (cv2)** – Camera handling
-* **face_recognition** – Face encoding & detection
-* **NumPy** – Numerical operations
-* **V4L2 backend** – Linux camera support
-
----
 
 ## 📦 Installation
 
@@ -92,7 +80,7 @@ pip3 install opencv-python face_recognition numpy
 ### 2. Project Setup
 
 ```bash
-mkdir -p /home/mach1/Python-Project/Face_data
+mkdir -p /home/username/BunFace/Face_data
 ```
 
 ---
@@ -102,7 +90,7 @@ mkdir -p /home/mach1/Python-Project/Face_data
 ### 🔹 Step 1: Register Face
 
 ```bash
-python3 register1.py
+python3 register.py
 ```
 
 * Press **`c`** to capture manually
@@ -113,7 +101,7 @@ python3 register1.py
 ### 🔹 Step 2: Authenticate
 
 ```bash
-python3 auth1.py
+python3 auth.py
 ```
 
 * System scans for face (5 seconds window)
@@ -121,30 +109,8 @@ python3 auth1.py
 
 ---
 
-## 📁 Directory Structure
 
-```
-BunFace/
-│── auth1.py              # Authentication script
-│── register1.py          # Face registration script
-│── Face_data/
-│   └── encoding.npy      # Stored face embedding
-```
 
----
-
-## 🧠 Core Logic
-
-### Face Matching Formula
-
-```
-distance = ||known_embedding - current_embedding||
-```
-
-* If `distance < 0.6` → Match
-* Else → No match
-
----
 
 ## 📜 Logging
 
@@ -167,13 +133,7 @@ AUTH SUCCESS
 
 ---
 
-## ⚠️ Limitations
 
-* Works best in good lighting conditions
-* Single-user system (one embedding)
-* No liveness detection (can be spoofed with images)
-
----
 
 ## 🔮 Future Improvements
 
@@ -194,11 +154,6 @@ Pull requests are welcome. For major changes, open an issue first.
 ## ⭐ Support
 
 If you like this project, give it a ⭐ on GitHub!
-
-# BunFace - Face Detection Security System for Ubuntu
-
-A real-time face authentication security system like Windows Hello for Ubuntu
-(and Debian-based) Linux.  Built on OpenCV, Python 3, and systemd.
 
 
 
