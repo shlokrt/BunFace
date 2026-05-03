@@ -3,12 +3,12 @@
 ## System overview
 
 ```
-┌─────────────────────────────────────────────────────────┐
+┌──────────────────────────────────────────────────────────┐
 │                    Linux PAM Stack                       │
-│                                                         │
-│  /etc/pam.d/sudo          /etc/pam.d/gdm-password       │
+│                                                          │
+│  /etc/pam.d/sudo          /etc/pam.d/gdm-password        │
 │       │                          │                       │
-│  pam_exec.so               pam_exec.so                  │
+│  pam_exec.so               pam_exec.so                   │
 │  auth.py                   face-login (bash)             │
 │       │                          │                       │
 │  auth_gui.py              gdm_auth_gui.py                │
@@ -18,7 +18,7 @@
 │                  │                                       │
 │            liveness.py                                   │
 │         (shared module)                                  │
-└─────────────────────────────────────────────────────────┘
+└──────────────────────────────────────────────────────────┘
 ```
 
 ## Authentication pipeline
